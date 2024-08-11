@@ -23,8 +23,6 @@
   .menuButton {
     display: block;
     cursor: pointer;
-    /* font-size: 30px;
-    font-weight: solid; */
   }
 
   .mobileLinks {
@@ -34,7 +32,6 @@
     width: 50%;
     height: calc(100vh - 100px);
     background-color: var(--bg);
-    /* background-color: rebeccapurple; */
     display: flex;
     flex-direction: column;
     align-items: center;
