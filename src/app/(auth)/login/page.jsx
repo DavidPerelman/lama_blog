@@ -1,4 +1,4 @@
-import { handleGithubLogin } from "@/lib/action";
+import { handleGithubLogin, login } from "@/lib/action";
 import { auth } from "@/lib/auth";
 
 const LoginPage = async () => {
