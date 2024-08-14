@@ -1,7 +1,9 @@
+import { register } from "@/lib/action";
+
 const RegisterPage = () => {
   return (
     <div>
-      <form action="">
+      <form action={register}>
         <input type="text" placeholder="username" name="username" />
         <input type="text" placeholder="email" name="email" />
         <input type="text" placeholder="password" name="password" />

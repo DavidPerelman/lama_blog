@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { connectToDb } from "./connectToDb";
-import { Post } from "./models";
+import { Post, User } from "./models";
 import { signIn, signOut } from "./auth";
 
 export const addPost = async (formData) => {
@@ -40,12 +40,44 @@ export const deletePost = async (formData) => {
   }
 };
 
-export const handleGithubLogin = async (e) => {
+export const handleGithubLogin = async () => {
   "use server";
   await signIn("github");
 };
 
-export const handleLogout = async (e) => {
+export const handleLogout = async () => {
   "use server";
   await signOut();
+};
+
+export const register = async (formData) => {
+  const { username, email, password, passwordRepeat, img } =
+    Object.fromEntries(formData);
+
+  if (password !== passwordRepeat) {
+    return "Passwords do not match";
+  }
+
+  try {
+    connectToDb();
+
+    const user = User.findOne({ username });
+
+    if (user) {
+      return "User already exists";
+    }
+
+    const newUser = new User({
+      username,
+      email,
+      password,
+      img,
+    });
+
+    await newUser.save();
+    console.log("saved to db");
+  } catch (error) {
+    console.log(error);
+    return { error: "Something went wrong" };
+  }
 };
