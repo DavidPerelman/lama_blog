@@ -61,7 +61,7 @@ export const register = async (formData) => {
   try {
     connectToDb();
 
-    const user = User.findOne({ username });
+    const user = await User.findOne({ username });
 
     if (user) {
       return "User already exists";
