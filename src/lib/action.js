@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { connectToDb } from "./connectToDb";
 import { Post, User } from "./models";
 import { signIn, signOut } from "./auth";
+import bcrypt from "bcrypt";
 
 export const addPost = async (formData) => {
   //   const title = formData.get("title");
@@ -67,10 +68,13 @@ export const register = async (formData) => {
       return "User already exists";
     }
 
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(password, salt);
+
     const newUser = new User({
       username,
       email,
-      password,
+      password: hashPassword,
       img,
     });
 
