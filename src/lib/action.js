@@ -56,7 +56,7 @@ export const register = async (formData) => {
     Object.fromEntries(formData);
 
   if (password !== passwordRepeat) {
-    return "Passwords do not match";
+    throw new Error("Passwords do not match");
   }
 
   try {
