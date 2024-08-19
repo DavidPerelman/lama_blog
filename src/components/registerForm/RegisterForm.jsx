@@ -1,4 +1,5 @@
 "use client";
+
 import { useFormState } from "react-dom";
 import styles from "./registerForm.module.css";
 import { register } from "@/lib/action";
