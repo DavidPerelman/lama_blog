@@ -59,7 +59,7 @@ export const addUser = async (previousState, formData) => {
   }
 };
 
-export const deleteUser = async (previousState, formData) => {
+export const deleteUser = async (formData) => {
   const { id } = Object.fromEntries(formData);
 
   try {

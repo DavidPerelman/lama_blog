@@ -10,7 +10,7 @@ const AdminPosts = async () => {
     <div className={styles.container}>
       <h1>Posts</h1>
       {posts.map((post) => (
-        <div key={post.id}>
+        <div className={styles.post} key={post.id}>
           <div className={styles.detail}>
             <Image
               src={post.img || "/noAvatar.png"}
