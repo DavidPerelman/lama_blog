@@ -22,7 +22,7 @@ export const addPost = async (formData) => {
     revalidatePath("/blog");
   } catch (error) {
     console.log(error);
-    throw new Error("Something went wrong!");
+    return { error: "Something went wrong!" };
   }
 };
 
@@ -37,7 +37,7 @@ export const deletePost = async (formData) => {
     revalidatePath("/blog");
   } catch (error) {
     console.log(error);
-    throw new Error("Something went wrong!");
+    return { error: "Something went wrong!" };
   }
 };
 
@@ -56,7 +56,7 @@ export const register = async (formData) => {
     Object.fromEntries(formData);
 
   if (password !== passwordRepeat) {
-    throw new Error("Passwords do not match");
+    return { error: "Passwords do not match" };
   }
 
   try {
@@ -65,7 +65,7 @@ export const register = async (formData) => {
     const user = await User.findOne({ username });
 
     if (user) {
-      return "User already exists";
+      return { error: "Username already exists" };
     }
 
     const salt = await bcrypt.genSalt(10);
