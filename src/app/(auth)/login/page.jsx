@@ -1,8 +1,7 @@
 "use client";
 
 import LoginForm from "@/components/loginForm/LoginForm";
-import { handleGithubLogin, login } from "@/lib/action";
-// import { auth } from "@/lib/auth";
+import { handleGithubLogin } from "@/lib/action";
 import styles from "./login.module.css";
 import { useEffect, useState } from "react";
 
@@ -12,9 +11,6 @@ const LoginPage = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
-
-  // const session = await auth();
-  // console.log(session);
 
   return (
     <>
